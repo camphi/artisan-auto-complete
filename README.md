@@ -1,6 +1,9 @@
 # artisan-auto-complete
 Script auto complete pour artisan
 
+### Install :
+- Ajouter un alias pour `artisan` dans le `~/.bashrc` ... `alias artisan='php artisan'`
+
 ### idées :
 - ajouter un "how to use"
 - ``php artisan | grep -E -v "(^\s+\w+$|command)" | grep -E "^ " | sed -e 's/^ \+//' -e 's/ --/\n--/g' -e 's/ \+.*$//' -e 's/,//' -e 's/:.*$/:/p' | sort -u``
