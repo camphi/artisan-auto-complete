@@ -1,0 +1,14 @@
+_artisan()
+{
+    local cur prev opts base
+    COMPREPLY=()
+    cur="${COMP_WORDS[COMP_CWORD]}"
+    prev="${COMP_WORDS[COMP_CWORD-1]}"
+
+    # list all possible options
+    opts=$(php artisan | grep -E -v "(^\s+\w+$|command)" | grep -E "^ " | cut -f3 -d\ | cut -f1 -d,)
+
+    COMPREPLY=($(compgen -W "${opts}" -- ${cur}))
+    return 0
+}
+complete -F _artisan artisan
