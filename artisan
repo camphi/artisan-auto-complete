@@ -3,18 +3,38 @@ _artisan()
     local cur prev opts base
     COMPREPLY=()
     #cur="${COMP_WORDS[COMP_CWORD]}"
-    _get_comp_words_by_ref -n : cur
-    prev="${COMP_WORDS[COMP_CWORD-1]}"
-    #echo $prev;
-    if [[ ${cur} == ':' ]] ; then
-        opts=$(php artisan | grep -E -v "(^\s+\w+$|command)" | grep -E "^ " | grep " ${prev}" | sed -e 's/^ \+//' -e "s/${prev}://" -e 's/ --/\n--/g' -e 's/ \+.*$//' -e 's/,//' | sort -u)
-    else
-        # list all possible options
-        opts=$(php artisan | grep -E -v "(^\s+\w+$|command)" | grep -E "^ " | sed -e 's/^ \+//' -e 's/ --/\n--/g' -e 's/ \+.*$//' -e 's/,//' | sort -u)
+    #prev="${COMP_WORDS[COMP_CWORD-1]}"
+    #_get_comp_words_by_ref -n : cur
+    _get_comp_words_by_ref -n : cur prev words
+    #echo "${cur}";
+    #echo "${prev}";
+    #echo "${words[1]}";
+
+    # list all possible options
+    opts=$(php artisan | grep -E -v "(^\s+\w+$|command)" | grep -E "^ " | sed -e 's/^ \+//' -e 's/ --/\n--/g' -e 's/ \+.*$//' -e 's/,//' | sort -u)
+
+    if array_contains opts "${words[1]}"; then
+        #echo "${words[1]} exist!";
+        opts=$(php artisan ${words[1]} --help)
+        echo "${opts}";
+        echo "artisan ${words[1]} ";
+        return 0;
     fi
 
     COMPREPLY=($(compgen -W "${opts}" -- ${cur}))
     __ltrim_colon_completions $cur
     return 0
+}
+array_contains () { 
+    local array="$1[@]"
+    local seeking=$2
+    local in=1
+    for element in "${!array}"; do
+        if [[ $element == $seeking ]]; then
+            in=0
+            break
+        fi
+    done
+    return $in
 }
 complete -F _artisan artisan
