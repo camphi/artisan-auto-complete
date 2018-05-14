@@ -10,6 +10,7 @@ Script auto complete pour artisan
 - ajouter un "how to use"
 - ajouter une version pour mac ou rendre le script compatible pour mac.
 - ajouter les options des commandes
+- ajouter des couleurs
 - auto complete une seul commande à la fois
 - __ltrim_colon_completions
 - if prev = command and cur = \ ;then show prev command help
