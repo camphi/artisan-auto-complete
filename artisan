@@ -11,11 +11,14 @@ _artisan()
     #echo "${words[1]}";
 
     # list all possible options
-    opts=$(php artisan | grep -E -v "(^\s+\w+$|command)" | grep -E "^ " | sed -e 's/^ \+//' -e 's/ --/\n--/g' -e 's/ \+.*$//' -e 's/,//' | sort -u)
+    opts=$(artisan | grep -E -v "(^\s+\w+$|command)" | grep -E "^ " | sed -e 's/^ \+//' -e 's/ --/\n--/g' -e 's/ \+.*$//' -e 's/,//' | sort -u)
 
+    #echo "word one is ${words[1]}";
+    #array_contains opts "${words[1]}" && echo yes;
     if array_contains opts "${words[1]}"; then
         #echo "${words[1]} exist!";
-        opts=$(php artisan ${words[1]} --help)
+        #return 0;
+        opts=$(artisan ${words[1]} --help)
         echo "${opts}";
         echo "artisan ${words[1]} ";
         return 0;
@@ -28,9 +31,11 @@ _artisan()
 array_contains () { 
     local array="$1[@]"
     local seeking=$2
+    #echo searching for $seeking
     local in=1
-    for element in "${!array}"; do
-        if [[ $element == $seeking ]]; then
+    for element in ${!array}; do
+        #echo is $seeking == $element ?
+        if [[ "$element" == "$seeking" ]]; then
             in=0
             break
         fi
