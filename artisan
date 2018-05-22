@@ -15,6 +15,8 @@ _artisan()
 
     #echo "word one is ${words[1]}";
     #array_contains opts "${words[1]}" && echo yes;
+
+    # in_array && cur is void the procede to next level 
     if array_contains opts "${words[1]}"; then
         #echo "${words[1]} exist!";
         #return 0;
