@@ -10,6 +10,8 @@ _artisan()
     #echo "${prev}";
     #echo "${words[1]}";
 
+    if [[ "${#cur}" == "0" ]]; then return 1;fi;
+
     # list all possible options
     opts=$(artisan | grep -E -v "(^\s+\w+$|command)" | grep -E "^ " | sed -e 's/^ \+//' -e 's/ --/\n--/g' -e 's/ \+.*$//' -e 's/,//' | sort -u)
 
@@ -50,4 +52,4 @@ array_contains () {
     done
     return $in
 }
-complete -F _artisan artisan
+complete -o default -F _artisan artisan
