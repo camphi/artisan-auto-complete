@@ -4,7 +4,7 @@ Script auto complete pour artisan
 ### Install :
 - Ajouter un alias pour `artisan` dans le `~/.bashrc` ... `alias artisan='php artisan'`
 - Download le script dans le `home` ... `cd && git clone https://github.com/camphi/artisan-auto-complete.git`
-- Ajouter le script au `~/.bashrc` ... `. ~/artisan-auto-complete/artisan`
+- Ajouter le script au `~/.bashrc` ... `. ~/artisan-auto-complete/artisan.sh`
 
 ### idées :
 - ajouter un "how to use"
