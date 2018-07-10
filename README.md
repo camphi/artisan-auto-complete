@@ -10,8 +10,6 @@ Script auto complete pour artisan
 - ajouter une version pour mac ou rendre le script compatible pour mac.
 - ajouter les options des commandes
 - ajouter des couleurs
-- auto complete une seul commande à la fois
-- __ltrim_colon_completions
 - if prev = command and cur = \ ;then show prev command help
 - https://github.com/scop/bash-completion/blob/583562b9e56207bd428497ceb96df4e1f1f53158/bash_completion
 - https://www.artificialworlds.net/blog/2012/10/17/bash-associative-array-examples/
