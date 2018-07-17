@@ -13,7 +13,8 @@ _artisan()
     if [[ "${#cur}" == "0" ]]; then return 1;fi;
 
     # list all possible options
-    opts=$(artisan | grep -E -v "(^\s+\w+$|command)" | grep -E "^ " | sed -e 's/^ \+//' -e 's/ --/\n--/g' -e 's/ \+.*$//' -e 's/,//' | sort -u)
+    #opts=$(artisan | grep -E -v "(^\s+\w+$|command)" | grep -E "^ " | sed -e 's/^ \+//' -e 's/ --/\n--/g' -e 's/ \+.*$//' -e 's/,//' | sort -u)
+    opts=$(artisan list --raw | sed -e 's/ --/\n--/g' -e 's/ \+.*$//' -e 's/,//' | sort -u)
 
     #echo "word one is ${words[1]}";
     #array_contains opts "${words[1]}" && echo yes;
@@ -22,13 +23,13 @@ _artisan()
     if array_contains opts "${words[1]}" && ! array_contains opts "${cur}"; then
         #echo "${words[1]} exist!";
         #return 0;
-        help_text=$(artisan ${words[1]} --help)
+        help_text=$(artisan ${words[1]} --help --raw)
         usage_start_at=$(echo "${help_text}" | grep -xn 'Usage:' | cut -d: -f1)
         arguments_start_at=$(echo "${help_text}" | grep -xn 'Arguments:' | cut -d: -f1)
         options_start_at=$(echo "${help_text}" | grep -xn 'Options:' | cut -d: -f1)
         help_start_at=$(echo "${help_text}" | grep -xn 'Help:' | cut -d: -f1)
         #echo "${options_start_at}"
-        opts=$(echo "${help_text}" | sed -n -e "$((${options_start_at} + 1)),$((${help_start_at} - 1))p"  | sed -e 's/^ \+//' -e 's/ --/\n--/g' -e 's/ \+.*$//' -e 's/,//' | sort -u)
+        opts=$(echo "${help_text}" | sed -n -e "$((${options_start_at} + 1)),$((${help_start_at} - 1))p"  | sed -e 's/^ \+//' -e 's/ --/\n--/g' -e 's/ \+.*$//' -e 's/,//' -e 's/--env\[=ENV\]/--env/' | sort -u)
         #echo "${opts}";
         #echo "artisan ${words[1]} ";
         #return 0;
