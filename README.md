@@ -6,6 +6,9 @@ Script auto complete pour artisan
 - Download le script dans le `home` ... `cd && git clone https://github.com/camphi/artisan-auto-complete.git`
 - Ajouter le script au `~/.bashrc` ... `. ~/artisan-auto-complete/artisan.sh`
 
+### Adaptation au client :
+- ~~Ajouter à la fin du fichier `artisan.sh` vos version de PHP ex:~~
+
 ### Notes :
 - ajouter une version pour mac ou rendre le script compatible pour mac.
 - ajouter les options des commandes
