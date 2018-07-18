@@ -1,5 +1,6 @@
 _artisan()
 {
+    if [ ! -f $1 ]; then return 1; fi;
     local cur prev opts base
     COMPREPLY=()
     #cur="${COMP_WORDS[COMP_CWORD]}"
@@ -29,7 +30,7 @@ _artisan()
         options_start_at=$(echo "${help_text}" | grep -xn 'Options:' | cut -d: -f1)
         help_start_at=$(echo "${help_text}" | grep -xn 'Help:' | cut -d: -f1)
         #echo "${options_start_at}"
-        opts=$(echo "${help_text}" | sed -n -e "$((${options_start_at} + 1)),$((${help_start_at} - 1))p"  | sed -e 's/^ \+//' -e 's/ --/\n--/g' -e 's/ \+.*$//' -e 's/,//' -e 's/--env\[=ENV\]/--env/' | sort -u)
+        opts=$(echo "${help_text}" | sed -n -e "$((${options_start_at} + 1)),$((${help_start_at} - 1))p"  | sed -e 's/^ \+//' -e 's/ --/\n--/g' -e 's/ \+.*$//' -e 's/,//' -e 's/--env\[=ENV\]/--env/' -e 's/|/ -/g')
         #echo "${opts}";
         #echo "artisan ${words[1]} ";
         #return 0;
