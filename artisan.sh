@@ -14,7 +14,7 @@ _artisan()
 
     # list all possible options
     #opts=$(artisan | grep -E -v "(^\s+\w+$|command)" | grep -E "^ " | sed -e 's/^ \+//' -e 's/ --/\n--/g' -e 's/ \+.*$//' -e 's/,//' | sort -u)
-    opts=$(artisan list --raw | sed -e 's/ --/\n--/g' -e 's/ \+.*$//' -e 's/,//' | sort -u)
+    opts=$(artisan list --raw | sed -e 's/ \+.*$//')
 
     #echo "word one is ${words[1]}";
     #array_contains opts "${words[1]}" && echo yes;
