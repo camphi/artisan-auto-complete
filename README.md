@@ -10,6 +10,7 @@ Script auto complete pour artisan
 - ~~Ajouter à la fin du fichier `artisan.sh` vos version de PHP ex:~~
 
 ### Notes :
+- CRLF -> LF
 - ajouter une version pour mac ou rendre le script compatible pour mac.
 - ajouter les options des commandes
 - ajouter des couleurs
