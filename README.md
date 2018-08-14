@@ -1,6 +1,9 @@
 # artisan-auto-complete
 Script auto complete pour artisan
 
+### Requis : 
+- `bash-completion` doit être présent ex : `sudo apt-get instal bash-completion`
+
 ### Install :
 - Ajouter un alias pour `artisan` dans le `~/.bashrc` ... `alias artisan='php artisan'`
 - Download le script dans le `home` ... `cd && git clone https://github.com/camphi/artisan-auto-complete.git`
