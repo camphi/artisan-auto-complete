@@ -2,7 +2,7 @@
 Script auto complete pour artisan
 
 ### Requis :
-- `bash-completion` doit être présent ex : `sudo apt-get instal bash-completion`
+- `bash-completion` doit être présent ex : `sudo apt-get install bash-completion`
 
 ### Install :
 - Download le script dans le `home` ... `cd && git clone https://github.com/camphi/artisan-auto-complete.git`
