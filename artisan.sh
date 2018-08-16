@@ -10,7 +10,7 @@ _artisan()
     opts=$(${words[0]} artisan list --raw | sed -e 's/ \+.*$//')
 
     if array_contains opts "${words[2]}" && ! array_contains opts "${cur}"; then
-        help_text=$(artisan ${words[2]} --help --raw)
+        help_text=$(${words[0]} artisan ${words[2]} --help --raw)
         usage_start_at=$(echo "${help_text}" | grep -xn 'Usage:' | cut -d: -f1)
         arguments_start_at=$(echo "${help_text}" | grep -xn 'Arguments:' | cut -d: -f1)
         options_start_at=$(echo "${help_text}" | grep -xn 'Options:' | cut -d: -f1)
