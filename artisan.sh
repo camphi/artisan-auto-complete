@@ -17,3 +17,4 @@ complete -o default -F _artisan php5.6
 complete -o default -F _artisan php7.0
 complete -o default -F _artisan php7.1
 complete -o default -F _artisan php7.2
+complete -o default -F _artisan php7.3
